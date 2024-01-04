@@ -4,6 +4,8 @@
         "*.wxss": "css",
         "*.wxs": "javascript",
         "iostream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp"
     }
 }

@@ -116,6 +116,68 @@ depend:
 	cd /root/chat/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+# Convenience name for target.
+src/server/CMakeFiles/ChatServer.dir/rule:
+	cd /root/chat/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/server/CMakeFiles/ChatServer.dir/rule
+.PHONY : src/server/CMakeFiles/ChatServer.dir/rule
+
+# Convenience name for target.
+ChatServer: src/server/CMakeFiles/ChatServer.dir/rule
+.PHONY : ChatServer
+
+# fast build rule for target.
+ChatServer/fast:
+	cd /root/chat/build && $(MAKE) $(MAKESILENT) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/build
+.PHONY : ChatServer/fast
+
+chatserver.o: chatserver.cpp.o
+.PHONY : chatserver.o
+
+# target to build an object file
+chatserver.cpp.o:
+	cd /root/chat/build && $(MAKE) $(MAKESILENT) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o
+.PHONY : chatserver.cpp.o
+
+chatserver.i: chatserver.cpp.i
+.PHONY : chatserver.i
+
+# target to preprocess a source file
+chatserver.cpp.i:
+	cd /root/chat/build && $(MAKE) $(MAKESILENT) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.i
+.PHONY : chatserver.cpp.i
+
+chatserver.s: chatserver.cpp.s
+.PHONY : chatserver.s
+
+# target to generate assembly for a file
+chatserver.cpp.s:
+	cd /root/chat/build && $(MAKE) $(MAKESILENT) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.s
+.PHONY : chatserver.cpp.s
+
+main.o: main.cpp.o
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	cd /root/chat/build && $(MAKE) $(MAKESILENT) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	cd /root/chat/build && $(MAKE) $(MAKESILENT) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	cd /root/chat/build && $(MAKE) $(MAKESILENT) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/main.cpp.s
+.PHONY : main.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -124,6 +186,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... ChatServer"
+	@echo "... chatserver.o"
+	@echo "... chatserver.i"
+	@echo "... chatserver.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 
