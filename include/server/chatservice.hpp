@@ -9,7 +9,7 @@ using json = nlohmann::json;
 using namespace muduo::net;
 using namespace muduo;
 
-using MsgHandler = std::function<void(const TcpConnectionPtr &conn,json &js,Timestamp time)>;
+using MsgHandler = std::function<void(const TcpConnectionPtr &,json &,Timestamp)>;
 
 //做业务有一个实例即可,故采用单例模式
 class ChatService
@@ -21,11 +21,13 @@ public:
     void login(const TcpConnectionPtr &conn,json &js,Timestamp time);
     //处理注册业务
     void reg(const TcpConnectionPtr &conn,json &js,Timestamp time);
+    //获取消息ID对应的处理器
+    MsgHandler getMsgHandler(EnMsgType msgId);
 private:
     //构造函数私有化
     ChatService();
     //存储消息ID和其对应的业务处理方法
-    unordered_map<int,MsgHandler> _msgHandlerMap;
+    unordered_map<EnMsgType,MsgHandler> _msgHandlerMap;
 
 };
 

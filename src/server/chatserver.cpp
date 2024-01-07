@@ -3,6 +3,7 @@
 #include "json.hpp"
 #include <string>
 #include <iostream>
+#include "chatservice.hpp"
 using json = nlohmann::json;
 ChatServer::ChatServer(EventLoop *loop,
             const InetAddress& listenAddr,
@@ -34,6 +35,7 @@ void ChatServer::onMessage(const TcpConnectionPtr &conn,Buffer *buffer,Timestamp
     //目的:完全解耦网络模块的代码和业务模块的代码
     //方法:1.面向接口的编程 2.面向抽象基类/回调操作
     //通过js中的messageID,调用绑定的回调操作,i.e.获取一个处理器handler=>>conn js time
-
-
+    MsgHandler msgHandler =ChatService::instance()->getMsgHandler(js["msgid"].get<int>());
+    //回调消息绑定好的事件处理器,来执行响应的业务处理
+    msgHandler(conn,js,time);
 }
