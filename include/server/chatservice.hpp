@@ -4,6 +4,7 @@
 #include <muduo/net/TcpConnection.h>
 #include "json.hpp"
 #include <iostream>
+// #include "public.hpp"
 using namespace std;
 using json = nlohmann::json;
 using namespace muduo::net;
@@ -22,12 +23,12 @@ public:
     //处理注册业务
     void reg(const TcpConnectionPtr &conn,json &js,Timestamp time);
     //获取消息ID对应的处理器
-    MsgHandler getMsgHandler(EnMsgType msgId);
+    MsgHandler getMsgHandler(int msgId);
 private:
     //构造函数私有化
     ChatService();
     //存储消息ID和其对应的业务处理方法
-    unordered_map<EnMsgType,MsgHandler> _msgHandlerMap;
+    unordered_map<int,MsgHandler> _msgHandlerMap;
 
 };
 

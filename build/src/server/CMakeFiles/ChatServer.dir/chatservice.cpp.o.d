@@ -1,28 +1,35 @@
-src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o: \
- /root/chat/src/server/chatserver.cpp /usr/include/stdc-predef.h \
- /root/chat/include/server/chatserver.hpp \
- /usr/include/muduo/net/TcpServer.h /usr/include/muduo/base/Atomic.h \
+src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o: \
+ /root/chat/src/server/chatservice.cpp /usr/include/stdc-predef.h \
+ /root/chat/include/server/chatservice.hpp \
+ /usr/include/muduo/net/TcpConnection.h \
  /usr/include/muduo/base/noncopyable.h \
- /usr/lib/gcc/x86_64-redhat-linux/11/include/stdint.h \
- /usr/include/stdint.h /usr/include/bits/libc-header-start.h \
- /usr/include/features.h /usr/include/features-time64.h \
- /usr/include/bits/wordsize.h /usr/include/bits/timesize.h \
- /usr/include/sys/cdefs.h /usr/include/bits/long-double.h \
- /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
- /usr/include/bits/types.h /usr/include/bits/typesizes.h \
- /usr/include/bits/time64.h /usr/include/bits/wchar.h \
- /usr/include/bits/stdint-intn.h /usr/include/bits/stdint-uintn.h \
- /usr/include/muduo/base/Types.h /usr/include/string.h \
+ /usr/include/muduo/base/StringPiece.h /usr/include/string.h \
+ /usr/include/bits/libc-header-start.h /usr/include/features.h \
+ /usr/include/features-time64.h /usr/include/bits/wordsize.h \
+ /usr/include/bits/timesize.h /usr/include/sys/cdefs.h \
+ /usr/include/bits/long-double.h /usr/include/gnu/stubs.h \
+ /usr/include/gnu/stubs-64.h \
  /usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h \
  /usr/include/bits/types/locale_t.h /usr/include/bits/types/__locale_t.h \
- /usr/include/strings.h /usr/include/c++/11/string \
+ /usr/include/strings.h /usr/include/c++/11/iosfwd \
  /usr/include/c++/11/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/c++/11/x86_64-redhat-linux/bits/os_defines.h \
  /usr/include/c++/11/x86_64-redhat-linux/bits/cpu_defines.h \
  /usr/include/c++/11/pstl/pstl_config.h \
  /usr/include/c++/11/bits/stringfwd.h \
- /usr/include/c++/11/bits/memoryfwd.h \
- /usr/include/c++/11/bits/char_traits.h \
+ /usr/include/c++/11/bits/memoryfwd.h /usr/include/c++/11/bits/postypes.h \
+ /usr/include/c++/11/cwchar /usr/include/wchar.h \
+ /usr/include/bits/floatn.h /usr/include/bits/floatn-common.h \
+ /usr/lib/gcc/x86_64-redhat-linux/11/include/stdarg.h \
+ /usr/include/bits/wchar.h /usr/include/bits/types/wint_t.h \
+ /usr/include/bits/types/mbstate_t.h \
+ /usr/include/bits/types/__mbstate_t.h /usr/include/bits/types/__FILE.h \
+ /usr/include/bits/types/FILE.h /usr/include/muduo/base/Types.h \
+ /usr/lib/gcc/x86_64-redhat-linux/11/include/stdint.h \
+ /usr/include/stdint.h /usr/include/bits/types.h \
+ /usr/include/bits/typesizes.h /usr/include/bits/time64.h \
+ /usr/include/bits/stdint-intn.h /usr/include/bits/stdint-uintn.h \
+ /usr/include/c++/11/string /usr/include/c++/11/bits/char_traits.h \
  /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/c++/11/bits/functexcept.h \
  /usr/include/c++/11/bits/exception_defines.h \
@@ -37,14 +44,7 @@ src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o: \
  /usr/include/c++/11/debug/assertions.h \
  /usr/include/c++/11/bits/stl_iterator.h \
  /usr/include/c++/11/bits/ptr_traits.h /usr/include/c++/11/debug/debug.h \
- /usr/include/c++/11/bits/predefined_ops.h \
- /usr/include/c++/11/bits/postypes.h /usr/include/c++/11/cwchar \
- /usr/include/wchar.h /usr/include/bits/floatn.h \
- /usr/include/bits/floatn-common.h \
- /usr/lib/gcc/x86_64-redhat-linux/11/include/stdarg.h \
- /usr/include/bits/types/wint_t.h /usr/include/bits/types/mbstate_t.h \
- /usr/include/bits/types/__mbstate_t.h /usr/include/bits/types/__FILE.h \
- /usr/include/bits/types/FILE.h /usr/include/c++/11/cstdint \
+ /usr/include/c++/11/bits/predefined_ops.h /usr/include/c++/11/cstdint \
  /usr/include/c++/11/bits/allocator.h \
  /usr/include/c++/11/x86_64-redhat-linux/bits/c++allocator.h \
  /usr/include/c++/11/ext/new_allocator.h /usr/include/c++/11/new \
@@ -52,10 +52,9 @@ src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o: \
  /usr/include/c++/11/bits/localefwd.h \
  /usr/include/c++/11/x86_64-redhat-linux/bits/c++locale.h \
  /usr/include/c++/11/clocale /usr/include/locale.h \
- /usr/include/bits/locale.h /usr/include/c++/11/iosfwd \
- /usr/include/c++/11/cctype /usr/include/ctype.h \
- /usr/include/bits/endian.h /usr/include/bits/endianness.h \
- /usr/include/c++/11/bits/ostream_insert.h \
+ /usr/include/bits/locale.h /usr/include/c++/11/cctype \
+ /usr/include/ctype.h /usr/include/bits/endian.h \
+ /usr/include/bits/endianness.h /usr/include/c++/11/bits/ostream_insert.h \
  /usr/include/c++/11/bits/cxxabi_forced.h \
  /usr/include/c++/11/bits/stl_function.h \
  /usr/include/c++/11/backward/binders.h \
@@ -106,9 +105,8 @@ src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o: \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/bits/types/error_t.h /usr/include/c++/11/bits/charconv.h \
  /usr/include/c++/11/bits/basic_string.tcc /usr/include/assert.h \
- /usr/include/muduo/net/TcpConnection.h \
- /usr/include/muduo/base/StringPiece.h /usr/include/muduo/net/Callbacks.h \
- /usr/include/muduo/base/Timestamp.h /usr/include/muduo/base/copyable.h \
+ /usr/include/muduo/net/Callbacks.h /usr/include/muduo/base/Timestamp.h \
+ /usr/include/muduo/base/copyable.h \
  /usr/local/include/boost/operators.hpp /usr/include/c++/11/cstddef \
  /usr/include/c++/11/iterator /usr/include/c++/11/bits/stream_iterator.h \
  /usr/include/c++/11/bits/streambuf_iterator.h \
@@ -203,17 +201,14 @@ src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o: \
  /usr/local/include/boost/cstdint.hpp \
  /usr/local/include/boost/core/demangle.hpp /usr/include/c++/11/cxxabi.h \
  /usr/include/c++/11/x86_64-redhat-linux/bits/cxxabi_tweaks.h \
- /usr/include/c++/11/map /usr/include/c++/11/bits/stl_tree.h \
- /usr/include/c++/11/bits/stl_map.h \
- /usr/include/c++/11/bits/stl_multimap.h \
- /usr/include/muduo/net/EventLoop.h /usr/include/c++/11/atomic \
- /usr/include/muduo/base/Mutex.h /usr/include/muduo/base/CurrentThread.h \
- /usr/include/muduo/net/TimerId.h /root/chat/thirdparty/json.hpp \
- /usr/include/c++/11/cassert /usr/include/c++/11/ciso646 \
- /usr/include/c++/11/numeric /usr/include/c++/11/bits/stl_numeric.h \
+ /root/chat/thirdparty/json.hpp /usr/include/c++/11/cassert \
+ /usr/include/c++/11/ciso646 /usr/include/c++/11/numeric \
+ /usr/include/c++/11/bits/stl_numeric.h \
  /usr/include/c++/11/pstl/glue_numeric_defs.h \
  /usr/include/c++/11/forward_list /usr/include/c++/11/bits/forward_list.h \
- /usr/include/c++/11/bits/forward_list.tcc /usr/include/c++/11/valarray \
+ /usr/include/c++/11/bits/forward_list.tcc /usr/include/c++/11/map \
+ /usr/include/c++/11/bits/stl_tree.h /usr/include/c++/11/bits/stl_map.h \
+ /usr/include/c++/11/bits/stl_multimap.h /usr/include/c++/11/valarray \
  /usr/include/c++/11/cmath /usr/include/math.h \
  /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
  /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
@@ -251,4 +246,5 @@ src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc /usr/include/c++/11/ostream \
  /usr/include/c++/11/bits/ostream.tcc \
  /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/iostream \
- /root/chat/include/server/chatservice.hpp
+ /root/chat/include/public.hpp /usr/include/muduo/base/Logging.h \
+ /usr/include/muduo/base/LogStream.h
