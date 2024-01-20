@@ -9,7 +9,7 @@ using namespace std;
 using json = nlohmann::json;
 using namespace muduo::net;
 using namespace muduo;
-
+#include "usermodel.hpp"
 using MsgHandler = std::function<void(const TcpConnectionPtr &,json &,Timestamp)>;
 
 //做业务有一个实例即可,故采用单例模式
@@ -29,7 +29,8 @@ private:
     ChatService();
     //存储消息ID和其对应的业务处理方法
     unordered_map<int,MsgHandler> _msgHandlerMap;
-
+    //数据操作类对象
+    UserModel _userModel;
 };
 
 
