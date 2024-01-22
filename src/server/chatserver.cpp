@@ -21,9 +21,10 @@ ChatServer::ChatServer(EventLoop *loop,
 void ChatServer::start(){
     _server.start();
 }
-//上报链接相关信息的回调函数
+//上报连接相关信息的回调函数
 void ChatServer::onConnection(const TcpConnectionPtr &conn){
     if(!conn->connected()){
+        ChatService::instance()->clientCloseException(conn);
         conn->shutdown();  //客户端断开链接
     }
 }

@@ -1,0 +1,11 @@
+{"msgid":1,"id":2,"password":"123456"}
+{"msgid":1,"id":1,"password":"Zh990606"}
+
+{"msgid":5,"id":1,"to":2,"msg":"Hello Li Si!"}
+{"msgid":5,"id":2,"to":1,"msg":"挺好的"}
+msgid
+id:1  (fromid)
+from:"Li Si"
+to:3  (toid)
+msg:"XXXXX"
+上线后提醒功能

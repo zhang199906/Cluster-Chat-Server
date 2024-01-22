@@ -9,6 +9,7 @@ using namespace std;
 using json = nlohmann::json;
 using namespace muduo::net;
 using namespace muduo;
+#include <mutex>
 #include "usermodel.hpp"
 using MsgHandler = std::function<void(const TcpConnectionPtr &,json &,Timestamp)>;
 
@@ -22,13 +23,21 @@ public:
     void login(const TcpConnectionPtr &conn,json &js,Timestamp time);
     //处理注册业务
     void reg(const TcpConnectionPtr &conn,json &js,Timestamp time);
+    //一对一聊天功能 
+    void oneChat(const TcpConnectionPtr $conn, json &js, Timestamp time);
     //获取消息ID对应的处理器
     MsgHandler getMsgHandler(int msgId);
+    //处理客户端异常退出
+    void clientCloseException(const TcpConnectionPtr &conn);
 private:
     //构造函数私有化
     ChatService();
     //存储消息ID和其对应的业务处理方法
     unordered_map<int,MsgHandler> _msgHandlerMap;
+    //存储在线用户的连接
+    unordered_map <int,TcpConnectionPtr> _userConnMap;
+    //定义互斥锁,保证线程安全
+    mutex _connMutex;
     //数据操作类对象
     UserModel _userModel;
 };

@@ -17,6 +17,7 @@ ChatService::ChatService(){
     // _msgHandlerMap.insert();
     _msgHandlerMap.insert({LOGIN_MSG,bind(&ChatService::login,this,_1,_2,_3)});
     _msgHandlerMap.insert({RES_MSG,bind(&ChatService::reg,this,_1,_2,_3)});
+    _msgHandlerMap.insert({ONE_CHAT_MSG,bind(&ChatService::oneChat,this,_1,_2,_3)});
 }
 
 //处理登录业务   ORM框架 Object Relationship Map 业务层操作的都是对象，把mysql封装成对象，不想用mysql想用redis时，只要封装redis即可
@@ -35,6 +36,10 @@ void ChatService::login(const TcpConnectionPtr &conn,json &js,Timestamp time){
             response["errormsg"] = "该账号已经登录,请重新输入新账号";
             conn->send(response.dump());
         }else{
+            //登录成功,记录用户连接信息
+            //使用带智能指针的锁自动解锁
+            {lock_guard<mutex> lock(_connMutex);
+            _userConnMap.insert({id,conn});}
             //登录成功,更新用户状态信息
             user.setState("online");
             if(_userModel.updateState(user)){
@@ -105,5 +110,46 @@ MsgHandler ChatService::getMsgHandler(int msgId){
     }
     else{
         return _msgHandlerMap[msgId];
+    }
+}
+
+void ChatService::clientCloseException(const TcpConnectionPtr &conn){
+    User user;
+    {lock_guard<mutex> lock(_connMutex);
+    for(auto it = _userConnMap.begin(); it != _userConnMap.end(); ++it)
+    {
+        if(it->second == conn){
+            //从map表删除用户的连接信息
+            user.setId(it->first);
+            _userConnMap.erase(it);
+            break;
+        }
+    }
+    }
+    if(user.getId() != -1){
+        //更新用户的状态信息
+        user.setState("offline");
+        _userModel.updateState(user);
+    }
+}
+
+void ChatService::oneChat(const TcpConnectionPtr $conn, json &js, Timestamp time){
+    //标识用户是否在线
+    int toid = js["to"].get<int>();
+    unordered_map<int, TcpConnectionPtr>::iterator it;
+    bool userState = false;
+    {
+        lock_guard<mutex> lock(_connMutex);
+        it = _userConnMap.find(toid);
+        if(it != _userConnMap.end()){
+            //toid在线,转发消息
+            userState = true;
+        }
+    }
+    if(userState){
+        //toid在线,转发消息
+        it->second->send(js.dump());//服务器相当于做了一次消息转发
+    }else{
+        //toid不在线,存储离线消息
     }
 }
