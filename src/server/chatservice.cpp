@@ -22,6 +22,42 @@ ChatService::ChatService(){
 //处理登录业务   ORM框架 Object Relationship Map 业务层操作的都是对象，把mysql封装成对象，不想用mysql想用redis时，只要封装redis即可
 void ChatService::login(const TcpConnectionPtr &conn,json &js,Timestamp time){
     LOG_INFO<<"do login service!!!";
+    int id = js["id"];
+    string pwd = js["password"];
+
+    User user = _userModel.query(id);
+    if(user.getPwd() == pwd){
+        if(user.getState() == "online"){
+            //该用户已经登录,不允许重复登录
+            json response;
+            response["msgid"] = LOGIN_MSG_ACK;
+            response["error"] = 2;
+            response["errormsg"] = "该账号已经登录,请重新输入新账号";
+            conn->send(response.dump());
+        }else{
+            //登录成功,更新用户状态信息
+            user.setState("online");
+            if(_userModel.updateState(user)){
+                LOG_INFO<<"修改登录状态成功";
+            }else{
+                LOG_INFO<<"修改登录状态失败";
+            }
+            json response;
+            response["msgid"] = LOGIN_MSG_ACK;
+            response["error"] = 0;
+            response["id"] = user.getId();
+            response["name"] = user.getName();
+            conn->send(response.dump());
+        }
+    }else{
+        //登录失败
+        json response;
+        response["msgid"] = LOGIN_MSG_ACK;
+        response["error"] = 1;
+        response["errormsg"] = "登录失败";
+        conn->send(response.dump());
+    }
+
 }
 
 //处理注册业务
