@@ -52,6 +52,7 @@ void ChatService::login(const TcpConnectionPtr &conn,json &js,Timestamp time){
             response["error"] = 0;
             response["id"] = user.getId();
             response["name"] = user.getName();
+            //查询该用户是否有离线消息
             conn->send(response.dump());
         }
     }else{
