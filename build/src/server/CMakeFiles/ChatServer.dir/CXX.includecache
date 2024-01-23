@@ -25,6 +25,8 @@ mutex
 -
 usermodel.hpp
 ../include/server/usermodel.hpp
+offlinemessagemodel.hpp
+../include/server/offlinemessagemodel.hpp
 
 ../include/server/db/db.h
 mysql/mysql.h
@@ -32,6 +34,12 @@ mysql/mysql.h
 string
 -
 muduo/base/Logging.h
+-
+
+../include/server/offlinemessagemodel.hpp
+string
+-
+vector
 -
 
 ../include/server/user.hpp
@@ -403,6 +411,12 @@ chatserver.hpp
 /root/Cluster-Chat-Server/src/server/chatserver.hpp
 iostream
 -
+
+/root/Cluster-Chat-Server/src/server/offlinemessagemodel.cpp
+offlinemessagemodel.hpp
+/root/Cluster-Chat-Server/src/server/offlinemessagemodel.hpp
+db.h
+/root/Cluster-Chat-Server/src/server/db.h
 
 /root/Cluster-Chat-Server/src/server/usermodel.cpp
 usermodel.hpp

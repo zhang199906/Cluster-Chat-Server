@@ -12,7 +12,6 @@ public:
     void remove(int userid);
     //查询用户的离线消息
     vector<string> query(int userid);//返回一个存储离线消息的vector
-    
 
 };
 #endif

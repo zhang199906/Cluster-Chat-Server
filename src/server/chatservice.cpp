@@ -53,6 +53,12 @@ void ChatService::login(const TcpConnectionPtr &conn,json &js,Timestamp time){
             response["id"] = user.getId();
             response["name"] = user.getName();
             //查询该用户是否有离线消息
+            vector<string> vec = _offlineMsgModel.query(id);
+            if(!vec.empty()){
+                response["offlinemsg"]=vec;
+                //读取该用户的离线消息以后，把该用户所有的离线消息删除掉
+                _offlineMsgModel.remove(id);
+            }
             conn->send(response.dump());
         }
     }else{
@@ -152,5 +158,6 @@ void ChatService::oneChat(const TcpConnectionPtr $conn, json &js, Timestamp time
         it->second->send(js.dump());//服务器相当于做了一次消息转发
     }else{
         //toid不在线,存储离线消息
+        _offlineMsgModel.insert(toid,js.dump());
     }
 }

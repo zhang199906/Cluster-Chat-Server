@@ -11,6 +11,7 @@ using namespace muduo::net;
 using namespace muduo;
 #include <mutex>
 #include "usermodel.hpp"
+#include "offlinemessagemodel.hpp"
 using MsgHandler = std::function<void(const TcpConnectionPtr &,json &,Timestamp)>;
 
 //做业务有一个实例即可,故采用单例模式
@@ -38,8 +39,10 @@ private:
     unordered_map <int,TcpConnectionPtr> _userConnMap;
     //定义互斥锁,保证线程安全
     mutex _connMutex;
-    //数据操作类对象
+    //数据操作类对象,用户登录，注册信息表
     UserModel _userModel;
+    //离线消息表
+    offlineMsgModel _offlineMsgModel;
 };
 
 

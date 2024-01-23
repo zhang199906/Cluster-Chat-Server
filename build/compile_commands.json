@@ -16,6 +16,11 @@
 },
 {
   "directory": "/root/Cluster-Chat-Server/build/src/server",
+  "command": "/usr/bin/g++   -I/root/Cluster-Chat-Server/include -I/root/Cluster-Chat-Server/include/server -I/root/Cluster-Chat-Server/include/server/db -I/root/Cluster-Chat-Server/thirdparty  -g -g   -o CMakeFiles/ChatServer.dir/offlinemessagemodel.cpp.o -c /root/Cluster-Chat-Server/src/server/offlinemessagemodel.cpp",
+  "file": "/root/Cluster-Chat-Server/src/server/offlinemessagemodel.cpp"
+},
+{
+  "directory": "/root/Cluster-Chat-Server/build/src/server",
   "command": "/usr/bin/g++   -I/root/Cluster-Chat-Server/include -I/root/Cluster-Chat-Server/include/server -I/root/Cluster-Chat-Server/include/server/db -I/root/Cluster-Chat-Server/thirdparty  -g -g   -o CMakeFiles/ChatServer.dir/usermodel.cpp.o -c /root/Cluster-Chat-Server/src/server/usermodel.cpp",
   "file": "/root/Cluster-Chat-Server/src/server/usermodel.cpp"
 },
