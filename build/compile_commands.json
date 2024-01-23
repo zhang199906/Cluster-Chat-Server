@@ -1,27 +1,27 @@
 [
 {
-  "directory": "/root/project/Cluster-Chat-Server/build/src/server",
-  "command": "/usr/bin/g++   -I/root/project/Cluster-Chat-Server/include -I/root/project/Cluster-Chat-Server/include/server -I/root/project/Cluster-Chat-Server/include/server/db -I/root/project/Cluster-Chat-Server/thirdparty  -g   -o CMakeFiles/ChatServer.dir/chatserver.cpp.o -c /root/project/Cluster-Chat-Server/src/server/chatserver.cpp",
-  "file": "/root/project/Cluster-Chat-Server/src/server/chatserver.cpp"
+  "directory": "/root/Cluster-Chat-Server/build/src/server",
+  "command": "/usr/bin/g++   -I/root/Cluster-Chat-Server/include -I/root/Cluster-Chat-Server/include/server -I/root/Cluster-Chat-Server/include/server/db -I/root/Cluster-Chat-Server/thirdparty  -g -g   -o CMakeFiles/ChatServer.dir/chatserver.cpp.o -c /root/Cluster-Chat-Server/src/server/chatserver.cpp",
+  "file": "/root/Cluster-Chat-Server/src/server/chatserver.cpp"
 },
 {
-  "directory": "/root/project/Cluster-Chat-Server/build/src/server",
-  "command": "/usr/bin/g++   -I/root/project/Cluster-Chat-Server/include -I/root/project/Cluster-Chat-Server/include/server -I/root/project/Cluster-Chat-Server/include/server/db -I/root/project/Cluster-Chat-Server/thirdparty  -g   -o CMakeFiles/ChatServer.dir/chatservice.cpp.o -c /root/project/Cluster-Chat-Server/src/server/chatservice.cpp",
-  "file": "/root/project/Cluster-Chat-Server/src/server/chatservice.cpp"
+  "directory": "/root/Cluster-Chat-Server/build/src/server",
+  "command": "/usr/bin/g++   -I/root/Cluster-Chat-Server/include -I/root/Cluster-Chat-Server/include/server -I/root/Cluster-Chat-Server/include/server/db -I/root/Cluster-Chat-Server/thirdparty  -g -g   -o CMakeFiles/ChatServer.dir/chatservice.cpp.o -c /root/Cluster-Chat-Server/src/server/chatservice.cpp",
+  "file": "/root/Cluster-Chat-Server/src/server/chatservice.cpp"
 },
 {
-  "directory": "/root/project/Cluster-Chat-Server/build/src/server",
-  "command": "/usr/bin/g++   -I/root/project/Cluster-Chat-Server/include -I/root/project/Cluster-Chat-Server/include/server -I/root/project/Cluster-Chat-Server/include/server/db -I/root/project/Cluster-Chat-Server/thirdparty  -g   -o CMakeFiles/ChatServer.dir/main.cpp.o -c /root/project/Cluster-Chat-Server/src/server/main.cpp",
-  "file": "/root/project/Cluster-Chat-Server/src/server/main.cpp"
+  "directory": "/root/Cluster-Chat-Server/build/src/server",
+  "command": "/usr/bin/g++   -I/root/Cluster-Chat-Server/include -I/root/Cluster-Chat-Server/include/server -I/root/Cluster-Chat-Server/include/server/db -I/root/Cluster-Chat-Server/thirdparty  -g -g   -o CMakeFiles/ChatServer.dir/main.cpp.o -c /root/Cluster-Chat-Server/src/server/main.cpp",
+  "file": "/root/Cluster-Chat-Server/src/server/main.cpp"
 },
 {
-  "directory": "/root/project/Cluster-Chat-Server/build/src/server",
-  "command": "/usr/bin/g++   -I/root/project/Cluster-Chat-Server/include -I/root/project/Cluster-Chat-Server/include/server -I/root/project/Cluster-Chat-Server/include/server/db -I/root/project/Cluster-Chat-Server/thirdparty  -g   -o CMakeFiles/ChatServer.dir/usermodel.cpp.o -c /root/project/Cluster-Chat-Server/src/server/usermodel.cpp",
-  "file": "/root/project/Cluster-Chat-Server/src/server/usermodel.cpp"
+  "directory": "/root/Cluster-Chat-Server/build/src/server",
+  "command": "/usr/bin/g++   -I/root/Cluster-Chat-Server/include -I/root/Cluster-Chat-Server/include/server -I/root/Cluster-Chat-Server/include/server/db -I/root/Cluster-Chat-Server/thirdparty  -g -g   -o CMakeFiles/ChatServer.dir/usermodel.cpp.o -c /root/Cluster-Chat-Server/src/server/usermodel.cpp",
+  "file": "/root/Cluster-Chat-Server/src/server/usermodel.cpp"
 },
 {
-  "directory": "/root/project/Cluster-Chat-Server/build/src/server",
-  "command": "/usr/bin/g++   -I/root/project/Cluster-Chat-Server/include -I/root/project/Cluster-Chat-Server/include/server -I/root/project/Cluster-Chat-Server/include/server/db -I/root/project/Cluster-Chat-Server/thirdparty  -g   -o CMakeFiles/ChatServer.dir/db/db.cpp.o -c /root/project/Cluster-Chat-Server/src/server/db/db.cpp",
-  "file": "/root/project/Cluster-Chat-Server/src/server/db/db.cpp"
+  "directory": "/root/Cluster-Chat-Server/build/src/server",
+  "command": "/usr/bin/g++   -I/root/Cluster-Chat-Server/include -I/root/Cluster-Chat-Server/include/server -I/root/Cluster-Chat-Server/include/server/db -I/root/Cluster-Chat-Server/thirdparty  -g -g   -o CMakeFiles/ChatServer.dir/db/db.cpp.o -c /root/Cluster-Chat-Server/src/server/db/db.cpp",
+  "file": "/root/Cluster-Chat-Server/src/server/db/db.cpp"
 }
 ]

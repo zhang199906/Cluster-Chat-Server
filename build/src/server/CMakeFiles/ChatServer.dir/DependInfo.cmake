@@ -4,12 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/root/project/Cluster-Chat-Server/src/server/chatserver.cpp" "/root/project/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o"
-  "/root/project/Cluster-Chat-Server/src/server/chatservice.cpp" "/root/project/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o"
-  "/root/project/Cluster-Chat-Server/src/server/db/db.cpp" "/root/project/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/db/db.cpp.o"
-  "/root/project/Cluster-Chat-Server/src/server/main.cpp" "/root/project/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/main.cpp.o"
-  "/root/project/Cluster-Chat-Server/src/server/usermodel.cpp" "/root/project/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/usermodel.cpp.o"
+  "/root/Cluster-Chat-Server/src/server/chatserver.cpp" "/root/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o"
+  "/root/Cluster-Chat-Server/src/server/chatservice.cpp" "/root/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o"
+  "/root/Cluster-Chat-Server/src/server/db/db.cpp" "/root/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/db/db.cpp.o"
+  "/root/Cluster-Chat-Server/src/server/main.cpp" "/root/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/main.cpp.o"
+  "/root/Cluster-Chat-Server/src/server/usermodel.cpp" "/root/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/usermodel.cpp.o"
   )
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

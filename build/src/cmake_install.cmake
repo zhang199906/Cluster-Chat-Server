@@ -1,4 +1,4 @@
-# Install script for directory: /root/project/Cluster-Chat-Server/src
+# Install script for directory: /root/Cluster-Chat-Server/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -29,7 +29,7 @@ endif()
 
 # Install shared libraries without execute permission?
 if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
-  set(CMAKE_INSTALL_SO_NO_EXE "0")
+  set(CMAKE_INSTALL_SO_NO_EXE "1")
 endif()
 
 # Is this installation the result of a crosscompile?
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/root/project/Cluster-Chat-Server/build/src/server/cmake_install.cmake")
+  include("/root/Cluster-Chat-Server/build/src/server/cmake_install.cmake")
 
 endif()
 
