@@ -12,6 +12,7 @@ using namespace muduo;
 #include <mutex>
 #include "usermodel.hpp"
 #include "offlinemessagemodel.hpp"
+#include "friendmodel.hpp"
 using MsgHandler = std::function<void(const TcpConnectionPtr &,json &,Timestamp)>;
 
 //做业务有一个实例即可,故采用单例模式
@@ -30,6 +31,10 @@ public:
     MsgHandler getMsgHandler(int msgId);
     //处理客户端异常退出
     void clientCloseException(const TcpConnectionPtr &conn);
+    //服务器异常业务重置方法，如异常退出时重置用户为offline
+    void reset();
+    //添加好友业务
+    void addFriend(const TcpConnectionPtr &conn, json &js, Timestamp time);
 private:
     //构造函数私有化
     ChatService();
@@ -42,7 +47,9 @@ private:
     //数据操作类对象,用户登录，注册信息表
     UserModel _userModel;
     //离线消息表
-    offlineMsgModel _offlineMsgModel;
+    OfflineMsgModel _offlineMsgModel;
+    //好友信息表
+    FriendModel _friendModel;
 };
 
 

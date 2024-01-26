@@ -27,6 +27,8 @@ usermodel.hpp
 ../include/server/usermodel.hpp
 offlinemessagemodel.hpp
 ../include/server/offlinemessagemodel.hpp
+friendmodel.hpp
+../include/server/friendmodel.hpp
 
 ../include/server/db/db.h
 mysql/mysql.h
@@ -35,6 +37,32 @@ string
 -
 muduo/base/Logging.h
 -
+
+../include/server/friendmodel.hpp
+vector
+-
+user.hpp
+-
+
+../include/server/group.hpp
+string
+-
+vector
+-
+groupuser.hpp
+-
+
+../include/server/groupmodel.hpp
+vector
+-
+user.hpp
+-
+group.hpp
+-
+
+../include/server/groupuser.hpp
+user.hpp
+../include/server/user.hpp
 
 ../include/server/offlinemessagemodel.hpp
 string
@@ -401,15 +429,33 @@ string
 -
 muduo/base/Logging.h
 -
+friendmodel.hpp
+/root/Cluster-Chat-Server/src/server/friendmodel.hpp
 
 /root/Cluster-Chat-Server/src/server/db/db.cpp
 db.h
 /root/Cluster-Chat-Server/src/server/db/db.h
 
+/root/Cluster-Chat-Server/src/server/friendmodel.cpp
+friendmodel.hpp
+/root/Cluster-Chat-Server/src/server/friendmodel.hpp
+db.h
+/root/Cluster-Chat-Server/src/server/db.h
+
+/root/Cluster-Chat-Server/src/server/groupmodel.cpp
+groupmodel.hpp
+/root/Cluster-Chat-Server/src/server/groupmodel.hpp
+db.h
+/root/Cluster-Chat-Server/src/server/db.h
+
 /root/Cluster-Chat-Server/src/server/main.cpp
 chatserver.hpp
 /root/Cluster-Chat-Server/src/server/chatserver.hpp
+chatservice.hpp
+/root/Cluster-Chat-Server/src/server/chatservice.hpp
 iostream
+-
+signal.h
 -
 
 /root/Cluster-Chat-Server/src/server/offlinemessagemodel.cpp

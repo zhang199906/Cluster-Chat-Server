@@ -2,7 +2,7 @@
 #include "db.h"
 
 //存储用户的离线消息
-void offlineMsgModel::insert(int userid, string msg){
+void OfflineMsgModel::insert(int userid, string msg){
     //1.组装sql语句
     char sql[1024] = {0};
     sprintf(sql,"insert into OfflineMessage values('%d','%s')",
@@ -15,7 +15,7 @@ void offlineMsgModel::insert(int userid, string msg){
     }
 }
 //删除用户的离线消息
-void offlineMsgModel::remove(int userid){
+void OfflineMsgModel::remove(int userid){
     char sql[1024] = {0};
     sprintf(sql,"delete from OfflineMessage where userid=%d",
         userid);
@@ -26,7 +26,7 @@ void offlineMsgModel::remove(int userid){
         mysql.update(sql);
     }
 }
-vector<string> offlineMsgModel::query(int userid){
+vector<string> OfflineMsgModel::query(int userid){
     char sql[1024] = {0};
     sprintf(sql,"select message from OfflineMessage where userid=%d",
         userid);

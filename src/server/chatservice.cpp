@@ -5,6 +5,7 @@
 
 using namespace std;
 #include <muduo/base/Logging.h>
+#include "friendmodel.hpp"
 using namespace muduo;
 //获取单例对象的接口函数
 ChatService* ChatService::instance(){
@@ -18,6 +19,7 @@ ChatService::ChatService(){
     _msgHandlerMap.insert({LOGIN_MSG,bind(&ChatService::login,this,_1,_2,_3)});
     _msgHandlerMap.insert({RES_MSG,bind(&ChatService::reg,this,_1,_2,_3)});
     _msgHandlerMap.insert({ONE_CHAT_MSG,bind(&ChatService::oneChat,this,_1,_2,_3)});
+    _msgHandlerMap.insert({ADD_FRIEND_MSG,bind(&ChatService::addFriend,this,_1,_2,_3)});
 }
 
 //处理登录业务   ORM框架 Object Relationship Map 业务层操作的都是对象，把mysql封装成对象，不想用mysql想用redis时，只要封装redis即可
@@ -58,6 +60,19 @@ void ChatService::login(const TcpConnectionPtr &conn,json &js,Timestamp time){
                 response["offlinemsg"]=vec;
                 //读取该用户的离线消息以后，把该用户所有的离线消息删除掉
                 _offlineMsgModel.remove(id);
+            }
+            //查询该用户的好友信息并返回
+            vector<User> friendVec = _friendModel.query(id);
+            if(!friendVec.empty()){
+                vector<string> friendToString;
+                for(User &user : friendVec){
+                    json js;
+                    js["id"]=user.getId();
+                    js["name"]=user.getName();
+                    js["state"]=user.getState();
+                    friendToString.push_back(js.dump());
+                }
+                response["friends"] = friendToString;
             }
             conn->send(response.dump());
         }
@@ -141,9 +156,10 @@ void ChatService::clientCloseException(const TcpConnectionPtr &conn){
 }
 
 void ChatService::oneChat(const TcpConnectionPtr $conn, json &js, Timestamp time){
-    //标识用户是否在线
-    int toid = js["to"].get<int>();
+    // int toid = js["to"].get<int>();
+    int toid = js["to"];
     unordered_map<int, TcpConnectionPtr>::iterator it;
+    //标识用户是否在线
     bool userState = false;
     {
         lock_guard<mutex> lock(_connMutex);
@@ -160,4 +176,17 @@ void ChatService::oneChat(const TcpConnectionPtr $conn, json &js, Timestamp time
         //toid不在线,存储离线消息
         _offlineMsgModel.insert(toid,js.dump());
     }
+}
+
+void ChatService::reset(){
+    //把online状态的用户，设置成offline
+    _userModel.resetState();
+}
+
+//添加好友业务
+void ChatService::addFriend(const TcpConnectionPtr &conn, json &js, Timestamp time){
+    int userid = js["id"];
+    int friendid = js["friendid"];
+    //存储好友信息
+    _friendModel.insert(userid,friendid);
 }

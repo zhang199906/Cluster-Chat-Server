@@ -7,6 +7,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/root/Cluster-Chat-Server/src/server/chatserver.cpp" "/root/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o"
   "/root/Cluster-Chat-Server/src/server/chatservice.cpp" "/root/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o"
   "/root/Cluster-Chat-Server/src/server/db/db.cpp" "/root/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/db/db.cpp.o"
+  "/root/Cluster-Chat-Server/src/server/friendmodel.cpp" "/root/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/friendmodel.cpp.o"
+  "/root/Cluster-Chat-Server/src/server/groupmodel.cpp" "/root/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/groupmodel.cpp.o"
   "/root/Cluster-Chat-Server/src/server/main.cpp" "/root/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/main.cpp.o"
   "/root/Cluster-Chat-Server/src/server/offlinemessagemodel.cpp" "/root/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/offlinemessagemodel.cpp.o"
   "/root/Cluster-Chat-Server/src/server/usermodel.cpp" "/root/Cluster-Chat-Server/build/src/server/CMakeFiles/ChatServer.dir/usermodel.cpp.o"

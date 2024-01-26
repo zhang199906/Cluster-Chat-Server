@@ -5,7 +5,7 @@ using namespace std;
 //user表的ORM类
 class User
 {
-private:
+protected:
     int _id;
     string _name;
     string _password;

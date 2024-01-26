@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 using namespace std;
-class offlineMsgModel{
+class OfflineMsgModel{
 public:
     //存储用户的离线消息
     void insert(int userid, string msg);

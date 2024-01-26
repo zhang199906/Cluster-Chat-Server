@@ -11,6 +11,16 @@
 },
 {
   "directory": "/root/Cluster-Chat-Server/build/src/server",
+  "command": "/usr/bin/g++   -I/root/Cluster-Chat-Server/include -I/root/Cluster-Chat-Server/include/server -I/root/Cluster-Chat-Server/include/server/db -I/root/Cluster-Chat-Server/thirdparty  -g -g   -o CMakeFiles/ChatServer.dir/friendmodel.cpp.o -c /root/Cluster-Chat-Server/src/server/friendmodel.cpp",
+  "file": "/root/Cluster-Chat-Server/src/server/friendmodel.cpp"
+},
+{
+  "directory": "/root/Cluster-Chat-Server/build/src/server",
+  "command": "/usr/bin/g++   -I/root/Cluster-Chat-Server/include -I/root/Cluster-Chat-Server/include/server -I/root/Cluster-Chat-Server/include/server/db -I/root/Cluster-Chat-Server/thirdparty  -g -g   -o CMakeFiles/ChatServer.dir/groupmodel.cpp.o -c /root/Cluster-Chat-Server/src/server/groupmodel.cpp",
+  "file": "/root/Cluster-Chat-Server/src/server/groupmodel.cpp"
+},
+{
+  "directory": "/root/Cluster-Chat-Server/build/src/server",
   "command": "/usr/bin/g++   -I/root/Cluster-Chat-Server/include -I/root/Cluster-Chat-Server/include/server -I/root/Cluster-Chat-Server/include/server/db -I/root/Cluster-Chat-Server/thirdparty  -g -g   -o CMakeFiles/ChatServer.dir/main.cpp.o -c /root/Cluster-Chat-Server/src/server/main.cpp",
   "file": "/root/Cluster-Chat-Server/src/server/main.cpp"
 },
