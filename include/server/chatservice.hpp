@@ -13,6 +13,7 @@ using namespace muduo;
 #include "usermodel.hpp"
 #include "offlinemessagemodel.hpp"
 #include "friendmodel.hpp"
+#include "groupmodel.hpp"
 using MsgHandler = std::function<void(const TcpConnectionPtr &,json &,Timestamp)>;
 
 //做业务有一个实例即可,故采用单例模式
@@ -35,6 +36,12 @@ public:
     void reset();
     //添加好友业务
     void addFriend(const TcpConnectionPtr &conn, json &js, Timestamp time);
+    //加入群组业务
+    void joinGroup(const TcpConnectionPtr &conn, json &js, Timestamp time);
+    //创建群组业务
+    void createGroup(const TcpConnectionPtr &conn, json &js, Timestamp time);
+    //群聊功能
+    void groupChat(const TcpConnectionPtr &conn, json &js, Timestamp time);
 private:
     //构造函数私有化
     ChatService();
@@ -50,6 +57,8 @@ private:
     OfflineMsgModel _offlineMsgModel;
     //好友信息表
     FriendModel _friendModel;
+    //群组相关表操作
+    GroupModel _groupModel;
 };
 
 

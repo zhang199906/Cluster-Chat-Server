@@ -6,5 +6,5 @@ CXX_FLAGS = -g -g
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/root/Cluster-Chat-Server/include -I/root/Cluster-Chat-Server/include/server -I/root/Cluster-Chat-Server/include/server/db -I/root/Cluster-Chat-Server/thirdparty 
+CXX_INCLUDES = -I/root/Cluster-Chat-Server/include -I/root/Cluster-Chat-Server/include/server -I/root/Cluster-Chat-Server/include/server/db -I/root/Cluster-Chat-Server/include/server/model -I/root/Cluster-Chat-Server/thirdparty 
 

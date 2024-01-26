@@ -186,7 +186,43 @@ void ChatService::reset(){
 //添加好友业务
 void ChatService::addFriend(const TcpConnectionPtr &conn, json &js, Timestamp time){
     int userid = js["id"];
+    //或
+    // int userid = js["id"].get<int>();
     int friendid = js["friendid"];
     //存储好友信息
     _friendModel.insert(userid,friendid);
+}
+
+void ChatService::createGroup(const TcpConnectionPtr &conn, json &js, Timestamp time){
+    int userid = js["id"];
+    string groupname = js["groupname"];
+    string groupdesc = js["groupdesc"];
+    Group group;
+    group.setName(groupname);
+    group.setDesc(groupdesc);
+    if(_groupModel.createGroup(group)){
+        js["groupid"] = group.getId();
+        js["grouprole"] = "creator";
+        joinGroup(conn,js,time);
+    }
+}
+
+void ChatService::joinGroup(const TcpConnectionPtr &conn, json &js, Timestamp time){
+    int groupid = js["groupid"];
+    int userid = js["id"];
+    string grouprole = js["grouprole"];
+    _groupModel.joinGroup(userid,groupid,grouprole);
+}
+
+void ChatService::groupChat(const TcpConnectionPtr &conn, json &js, Timestamp time){
+    int userid = js["id"];
+    int groupid = js["id"];
+    vector<int> vecUser = _groupModel.queryGroupUsers(userid,groupid);
+    for(int id : vecUser){
+        if(_userConnMap.find(id) != _userConnMap.end()){
+            _userConnMap[id]->send(js.dump());
+        }else{
+            _offlineMsgModel.insert(id,js.dump());
+        }
+    }
 }

@@ -6,6 +6,7 @@
                 "${default}",
                 "include",
                 "include/server",
+                "include/server/model",
                 "include/server/db",
                 "thirdparty"
             ],
