@@ -38,5 +38,10 @@
   "directory": "/root/Cluster-Chat-Server/build/src/server",
   "command": "/usr/bin/g++   -I/root/Cluster-Chat-Server/include -I/root/Cluster-Chat-Server/include/server -I/root/Cluster-Chat-Server/include/server/db -I/root/Cluster-Chat-Server/include/server/model -I/root/Cluster-Chat-Server/thirdparty  -g -g   -o CMakeFiles/ChatServer.dir/db/db.cpp.o -c /root/Cluster-Chat-Server/src/server/db/db.cpp",
   "file": "/root/Cluster-Chat-Server/src/server/db/db.cpp"
+},
+{
+  "directory": "/root/Cluster-Chat-Server/build/src/client",
+  "command": "/usr/bin/g++   -I/root/Cluster-Chat-Server/include -I/root/Cluster-Chat-Server/include/server -I/root/Cluster-Chat-Server/include/server/db -I/root/Cluster-Chat-Server/include/server/model -I/root/Cluster-Chat-Server/thirdparty  -g -g   -o CMakeFiles/ChatClient.dir/main.cpp.o -c /root/Cluster-Chat-Server/src/client/main.cpp",
+  "file": "/root/Cluster-Chat-Server/src/client/main.cpp"
 }
 ]
