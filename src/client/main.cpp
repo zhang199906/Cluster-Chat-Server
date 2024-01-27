@@ -92,7 +92,7 @@ int main(int argc,char **argv)
         {
             int id = 0;
             char pwd[50] = {0};
-            cout << "userid";
+            cout << "userid:";
             cin >> id;
             cin.get(); //读掉缓冲区的回车
             cout << "userpassword:";
@@ -126,6 +126,8 @@ int main(int argc,char **argv)
                     else //登录成功
                     {
                         //记录当前用户的id和name
+                        cout<<buffer;
+
                         currentUser.setId(responsejs["id"]);
                         currentUser.setName(responsejs["name"]);
 
@@ -205,8 +207,8 @@ int main(int argc,char **argv)
             char name[50] = {0};
             cout << "开始注册账号，请按照提示信息输入：" << endl;
             cout << "name:";
-            cin >> name;
-            cin.get(); //读掉缓冲区的回车
+            cin.getline(name,50);
+//            cin.get(); //读掉缓冲区的回车
             cout << "userpassword:";
             cin.getline(pwd,50);
 

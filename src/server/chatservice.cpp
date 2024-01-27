@@ -76,7 +76,9 @@ void ChatService::login(const TcpConnectionPtr &conn,json &js,Timestamp time){
             }
 
             //查询用户的群组信息
+            cout<<"查询用户的群组信息";
             vector<Group> groupVec = _groupModel.queryGroups(id);
+            cout<<"查询用户的群组信息";
             if(!groupVec.empty()){
                 vector<string> groupStrVec;
                 for(Group group : groupVec)
@@ -100,6 +102,7 @@ void ChatService::login(const TcpConnectionPtr &conn,json &js,Timestamp time){
                 }
                 response["groups"] = groupStrVec;
             }
+            cout<<"发送响应";
             conn->send(response.dump());
         }
     }else{

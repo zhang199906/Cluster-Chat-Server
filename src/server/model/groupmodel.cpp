@@ -25,7 +25,7 @@ void GroupModel::joinGroup(int userid, int groupid, string role){
 
 vector<Group> GroupModel::queryGroups(int userid){
     char sql[1024];
-    sprintf(sql,"select a.id,a.groupname,a.groupdesc from AllGroup a inner join GroupUser on a.id = b.groupidwhere b.userid= %d",userid);
+    sprintf(sql,"select a.id,a.groupname,a.groupdesc from AllGroup a inner join GroupUser b on a.id = b.groupid where b.userid= %d",userid);
     MySQL mysql;
     vector<Group> vec;
     if(mysql.connect()){
