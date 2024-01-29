@@ -20,6 +20,9 @@ ChatService::ChatService(){
     _msgHandlerMap.insert({RES_MSG,bind(&ChatService::reg,this,_1,_2,_3)});
     _msgHandlerMap.insert({ONE_CHAT_MSG,bind(&ChatService::oneChat,this,_1,_2,_3)});
     _msgHandlerMap.insert({ADD_FRIEND_MSG,bind(&ChatService::addFriend,this,_1,_2,_3)});
+    _msgHandlerMap.insert({CREATE_GROUP_MSG,bind(&ChatService::createGroup,this,_1,_2,_3)});
+    _msgHandlerMap.insert({JOIN_GROUP_MSG,bind(&ChatService::joinGroup,this,_1,_2,_3)});
+    _msgHandlerMap.insert({GROUP_CHAT_MSG,bind(&ChatService::groupChat,this,_1,_2,_3)});
 }
 
 //处理登录业务   ORM框架 Object Relationship Map 业务层操作的都是对象，把mysql封装成对象，不想用mysql想用redis时，只要封装redis即可
@@ -76,9 +79,10 @@ void ChatService::login(const TcpConnectionPtr &conn,json &js,Timestamp time){
             }
 
             //查询用户的群组信息
-            cout<<"查询用户的群组信息";
+//            cout<<"查询用户的群组信息"<<endl;
+//            cout<<"这里"<<endl;
             vector<Group> groupVec = _groupModel.queryGroups(id);
-            cout<<"查询用户的群组信息";
+//            cout<<"查询用户的群组信息"<<endl;
             if(!groupVec.empty()){
                 vector<string> groupStrVec;
                 for(Group group : groupVec)
@@ -186,7 +190,10 @@ void ChatService::clientCloseException(const TcpConnectionPtr &conn){
 
 void ChatService::oneChat(const TcpConnectionPtr $conn, json &js, Timestamp time){
     // int toid = js["to"].get<int>();
+    //开始发送
+//    cout << "开始解析消息" << endl;
     int toid = js["to"];
+//    cout << "toid:" << toid << endl;
     unordered_map<int, TcpConnectionPtr>::iterator it;
     //标识用户是否在线
     bool userState = false;

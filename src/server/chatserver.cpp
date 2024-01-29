@@ -32,6 +32,7 @@ void ChatServer::onConnection(const TcpConnectionPtr &conn){
 void ChatServer::onMessage(const TcpConnectionPtr &conn,Buffer *buffer,Timestamp time){
     string buf = buffer->retrieveAllAsString(); //把Buffer转化为string;
     //数据的反序列化
+
     json js = json::parse(buf);
     //目的:完全解耦网络模块的代码和业务模块的代码
     //方法:1.面向接口的编程 2.面向抽象基类/回调操作
