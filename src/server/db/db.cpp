@@ -34,9 +34,9 @@ bool MySQL::update(string sql){
 }
 
 MYSQL_RES* MySQL::query(string sql){
-    if (mysql_query(_conn,sql.c_str())){
+    if (mysql_query(_conn, sql.c_str())){
         LOG_INFO << __FILE__ << ":" << __LINE__<< ":"
-                 << sql << "查询失败";
+                 << sql << " 查询失败";
         return nullptr;
     }
     return mysql_use_result(_conn);

@@ -42,6 +42,8 @@ public:
     void createGroup(const TcpConnectionPtr &conn, json &js, Timestamp time);
     //群聊功能
     void groupChat(const TcpConnectionPtr &conn, json &js, Timestamp time);
+    //注销登录功能
+    void logout(const TcpConnectionPtr &conn, json &js, Timestamp time);
 private:
     //构造函数私有化
     ChatService();

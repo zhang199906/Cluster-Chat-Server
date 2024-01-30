@@ -8,13 +8,15 @@ using namespace std;
 #include "friendmodel.hpp"
 using namespace muduo;
 //获取单例对象的接口函数
-ChatService* ChatService::instance(){
+ChatService* ChatService::instance()
+{
     static ChatService service;
     return &service;
 }
 
 //存储消息id和对应的回调操作
-ChatService::ChatService(){
+ChatService::ChatService()
+{
     // _msgHandlerMap.insert();
     _msgHandlerMap.insert({LOGIN_MSG,bind(&ChatService::login,this,_1,_2,_3)});
     _msgHandlerMap.insert({RES_MSG,bind(&ChatService::reg,this,_1,_2,_3)});
@@ -23,10 +25,12 @@ ChatService::ChatService(){
     _msgHandlerMap.insert({CREATE_GROUP_MSG,bind(&ChatService::createGroup,this,_1,_2,_3)});
     _msgHandlerMap.insert({JOIN_GROUP_MSG,bind(&ChatService::joinGroup,this,_1,_2,_3)});
     _msgHandlerMap.insert({GROUP_CHAT_MSG,bind(&ChatService::groupChat,this,_1,_2,_3)});
+    _msgHandlerMap.insert({LOGOUT_MSG,bind(&ChatService::logout,this,_1,_2,_3)});
 }
 
 //处理登录业务   ORM框架 Object Relationship Map 业务层操作的都是对象，把mysql封装成对象，不想用mysql想用redis时，只要封装redis即可
-void ChatService::login(const TcpConnectionPtr &conn,json &js,Timestamp time){
+void ChatService::login(const TcpConnectionPtr &conn,json &js,Timestamp time)
+{
     LOG_INFO<<"do login service!!!";
     int id = js["id"];
     string pwd = js["password"];
@@ -106,7 +110,7 @@ void ChatService::login(const TcpConnectionPtr &conn,json &js,Timestamp time){
                 }
                 response["groups"] = groupStrVec;
             }
-            cout<<"发送响应";
+//            cout<<"发送响应";
             conn->send(response.dump());
         }
     }else{
@@ -121,7 +125,8 @@ void ChatService::login(const TcpConnectionPtr &conn,json &js,Timestamp time){
 }
 
 //处理注册业务
-void ChatService::reg(const TcpConnectionPtr &conn,json &js,Timestamp time){
+void ChatService::reg(const TcpConnectionPtr &conn,json &js,Timestamp time)
+{
     LOG_INFO<<"do reg service";
     string name = js["name"];
     string pwd = js["password"];
@@ -153,7 +158,8 @@ void ChatService::reg(const TcpConnectionPtr &conn,json &js,Timestamp time){
 }
 
 //获取消息对应的处理器
-MsgHandler ChatService::getMsgHandler(int msgId){
+MsgHandler ChatService::getMsgHandler(int msgId)
+{
     auto it = _msgHandlerMap.find(msgId);
     //记录错误日志,msgid没有对应的事件处理回调
     if(it == _msgHandlerMap.end()){
@@ -168,18 +174,20 @@ MsgHandler ChatService::getMsgHandler(int msgId){
     }
 }
 
-void ChatService::clientCloseException(const TcpConnectionPtr &conn){
+void ChatService::clientCloseException(const TcpConnectionPtr &conn)
+{
     User user;
-    {lock_guard<mutex> lock(_connMutex);
-    for(auto it = _userConnMap.begin(); it != _userConnMap.end(); ++it)
     {
-        if(it->second == conn){
-            //从map表删除用户的连接信息
-            user.setId(it->first);
-            _userConnMap.erase(it);
-            break;
+        lock_guard<mutex> lock(_connMutex);
+        for(auto it = _userConnMap.begin(); it != _userConnMap.end(); ++it)
+        {
+            if(it->second == conn){
+                //从map表删除用户的连接信息
+                user.setId(it->first);
+                _userConnMap.erase(it);
+                break;
+            }
         }
-    }
     }
     if(user.getId() != -1){
         //更新用户的状态信息
@@ -188,7 +196,8 @@ void ChatService::clientCloseException(const TcpConnectionPtr &conn){
     }
 }
 
-void ChatService::oneChat(const TcpConnectionPtr $conn, json &js, Timestamp time){
+void ChatService::oneChat(const TcpConnectionPtr $conn, json &js, Timestamp time)
+{
     // int toid = js["to"].get<int>();
     //开始发送
 //    cout << "开始解析消息" << endl;
@@ -214,13 +223,15 @@ void ChatService::oneChat(const TcpConnectionPtr $conn, json &js, Timestamp time
     }
 }
 
-void ChatService::reset(){
+void ChatService::reset()
+{
     //把online状态的用户，设置成offline
     _userModel.resetState();
 }
 
 //添加好友业务
-void ChatService::addFriend(const TcpConnectionPtr &conn, json &js, Timestamp time){
+void ChatService::addFriend(const TcpConnectionPtr &conn, json &js, Timestamp time)
+{
     int userid = js["id"];
     //或
     // int userid = js["id"].get<int>();
@@ -229,7 +240,8 @@ void ChatService::addFriend(const TcpConnectionPtr &conn, json &js, Timestamp ti
     _friendModel.insert(userid,friendid);
 }
 
-void ChatService::createGroup(const TcpConnectionPtr &conn, json &js, Timestamp time){
+void ChatService::createGroup(const TcpConnectionPtr &conn, json &js, Timestamp time)
+{
     int userid = js["id"];
     string groupname = js["groupname"];
     string groupdesc = js["groupdesc"];
@@ -243,16 +255,20 @@ void ChatService::createGroup(const TcpConnectionPtr &conn, json &js, Timestamp 
     }
 }
 
-void ChatService::joinGroup(const TcpConnectionPtr &conn, json &js, Timestamp time){
+void ChatService::joinGroup(const TcpConnectionPtr &conn, json &js, Timestamp time)
+{
+    LOG_INFO << "解析加入群组号";
     int groupid = js["groupid"];
     int userid = js["id"];
     string grouprole = js["grouprole"];
+    LOG_INFO << "解析加入群组号完成";
     _groupModel.joinGroup(userid,groupid,grouprole);
 }
 
-void ChatService::groupChat(const TcpConnectionPtr &conn, json &js, Timestamp time){
+void ChatService::groupChat(const TcpConnectionPtr &conn, json &js, Timestamp time)
+{
     int userid = js["id"];
-    int groupid = js["id"];
+    int groupid = js["groupid"];
     vector<int> vecUser = _groupModel.queryGroupUsers(userid,groupid);
     for(int id : vecUser){
         if(_userConnMap.find(id) != _userConnMap.end()){
@@ -261,4 +277,20 @@ void ChatService::groupChat(const TcpConnectionPtr &conn, json &js, Timestamp ti
             _offlineMsgModel.insert(id,js.dump());
         }
     }
+}
+
+//处理注销业务
+void ChatService::logout(const TcpConnectionPtr &conn, json &js, Timestamp time)
+{
+    int userid = js["id"];
+    {
+        lock_guard<mutex> lock(_connMutex);
+        auto it = _userConnMap.find(userid);
+        if(it != _userConnMap.end()){
+            _userConnMap.erase(it);
+        }
+    }
+    User user(userid,"","","offline");
+    //更新用户的状态信息
+    _userModel.updateState(user);
 }

@@ -46,6 +46,7 @@ vector<string> OfflineMsgModel::query(int userid){
             mysql_free_result(res);
             return vec;
         }
+        mysql_free_result(res);
     }
     return vec;
 }
